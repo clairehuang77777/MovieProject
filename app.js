@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+//設定靜態文件資源
+app.use(express.static('public'))
+
 //設定路由
 app.get('/', (req , res) => {
   res.redirect('/movies')
