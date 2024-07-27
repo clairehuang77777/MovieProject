@@ -6,7 +6,7 @@ const port = 3000
 
 //載入handlebars
 app.engine('.hbs', engine({extname: '.hbs'})) //設置新的模板引擎
-app.set('view engine', '.hbs') //使用.hbs作為默認引擎
+app.set('view engine', '.hbs') //使用.hbs作為默認樣板引擎
 app.set('views', './views') //設置模板文件的目錄
 
 //設定靜態文件資源
