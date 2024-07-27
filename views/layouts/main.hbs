@@ -1,16 +1,27 @@
-<!--定義全站的佈局--layout>
+<!--定義全站的佈局|layout-->
+<!--載入stylesheet & javascript, 為什麼在不同資料夾可以直接引入不用著名資料夾位置? -->
 <!DOCTYPE html>
 <html>
 
   <head>
     <meta charset="utf-8">
     <title>Example App</title>
+    <!--因為在app.js有設定靜態資源都是從public來，這邊不用在另外slash從public來-->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
   </head>
 
 <body>
-
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Movie List</a>
+    </div>
+  </nav>
   {{{body}}}
-
+  
+  <!--因為在app.js有設定靜態資源都是從public來，這邊不用在另外slash從public來-->
+  <script src="/javascripts/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
