@@ -20,20 +20,27 @@ app.get('/', (req , res) => {
   res.redirect('/movies')
 })
 
-//靜態路由
 //代表要渲染的模板文件是index.hbs
 //要傳入的數據對象是 movies
 app.get('/movies',(req , res) =>{
-  res.render('index', {movies , BASE_IMG_URL})
+  let keyword = req.query.search
+  const selectedmovies = movies.filter((mv) => 
+    //為了能夠搜尋title, description..等增加的
+   Object.values(mv).some((property) => {
+    if (typeof property === 'string') {
+      return property.toLowerCase().includes(keyword.toLowerCase())
+    }
+    return false
+    }))
+  res.render('index',{ movies: selectedmovies ,BASE_IMG_URL})
 })
 
-
-//動態路由
 app.get('/movie/:id',(req , res)=>{
   const id = req.params.id //用來抓取URL上的id值
   const movie = movies.find((mv) => mv.id.toString() === id)//抓取符合id值的arr
   res.render('detail', {movie, BASE_IMG_URL})//把這個片段傳進去detail.hbs內
 })
+
 
 //監聽port是否被trigger
 app.listen(port, () => {
