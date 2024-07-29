@@ -29,9 +29,10 @@ app.get('/movies',(req , res) =>{
 
 
 //動態路由
-app.get('/movies/:id',(req , res)=>{
-  const id = req.params.id
-  res.send(`read movie:${id}`)
+app.get('/movie/:id',(req , res)=>{
+  const id = req.params.id //用來抓取URL上的id值
+  const movie = movies.find((mv) => mv.id.toString() === id)//抓取符合id值的arr
+  res.render('detail', {movie, BASE_IMG_URL})//把這個片段傳進去detail.hbs內
 })
 
 //監聽port是否被trigger
